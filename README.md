@@ -36,6 +36,8 @@ The device evaluates physiological inputs concurrently, processes state logic on
 
 To prevent false positives from transient physiological spikes, the system utilizes a dual-signal thresholding approach paired with confirmation and recovery timing windows.
 
+![State Machine Diagram](02_detection_state_machine.png)
+
 * **NORMAL:** Baseline monitoring of dual physiological parameters.
 * **PREALERT:** Initiated upon concurrent signal elevation; enters a confirmation window.
 * **ALERT:** Confirmed sustained state; triggers progressive feedback response.
