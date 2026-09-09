@@ -22,7 +22,7 @@ PulsePebble is a handheld, self-directed embedded prototype engineered to sense 
 
 The device evaluates physiological inputs concurrently, processes state logic on the MCU, triggers physical feedback, and streams live telemetry to a host application.
 
-![System Architecture](docs/system-architecture.png)
+![System Architecture](01_system_architecture.png)
 
 ### Core Subsystems:
 * **Physiological Sensing:** Dual-signal acquisition combining heart rate (PPG) and skin conductance (GSR).
@@ -36,7 +36,7 @@ The device evaluates physiological inputs concurrently, processes state logic on
 
 To prevent false positives from transient physiological spikes, the system utilizes a dual-signal thresholding approach paired with confirmation and recovery timing windows.
 
-![State Machine Diagram](docs/detection-state-machine.png)
+![State Machine Diagram](02_detection_state_machine.png)
 
 * **NORMAL:** Baseline monitoring of dual physiological parameters.
 * **PREALERT:** Initiated upon concurrent signal elevation; enters a confirmation window.
@@ -49,7 +49,7 @@ To prevent false positives from transient physiological spikes, the system utili
 
 Feedback modalities are structured to guide user regulation first, escalate second, and support recovery last:
 
-![Feedback Escalation Flow](docs/feedback-escalation.png)
+![Feedback Escalation Flow](03_intervention_escalation.png)
 
 1. **Guided Visual & Haptic Cues:** Synchronized WS2812B LED breathing animations and subtle haptic feedback.
 2. **Auditory Escalation:** Secondary audio cue if physiological elevation remains unresolved over a set duration.
@@ -61,7 +61,7 @@ Feedback modalities are structured to guide user regulation first, escalate seco
 
 The software pipeline provides real-time observability without placing UI processing load on the microcontroller:
 
-![Software Pipeline](docs/telemetry-pipeline.png)
+![Software Pipeline](04_software_telemetry_pipeline.png)
 
 * **Serial Data Parsing:** Python backend validates live serial input from the ESP32-S3.
 * **Episode Logging:** Captures metrics including pre-alert duration, peak physiological values, alert duration, and recovery timing into SQLite/CSV exports.
